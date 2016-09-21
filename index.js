@@ -6,8 +6,7 @@ var http = require("http"),
 
 http.createServer(function(request, response) {
 
-  var uri = url.parse(request.url).pathname
-    , filename = path.join(process.cwd(), uri);
+  var uri = url.parse(request.url).pathname, filename = path.join(process.cwd(), uri);
   
   fs.exists(filename, function(exists) {
     if(!exists) {
@@ -33,3 +32,5 @@ http.createServer(function(request, response) {
     });
   });
 }).listen(parseInt(port, 10));
+
+console.log("Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
